@@ -1,5 +1,5 @@
 #import<Property.h>
 
-@implementation Property
-
+@implementation BioProperty
+-(void) print{}
 @end

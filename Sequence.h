@@ -1,7 +1,7 @@
 #import<Property.h>
 #import<Foundation/NSString.h>
 
-@interface Sequence:Property{
+@interface Sequence:BioProperty{
     NSString *sequence;
 }
 
@@ -9,4 +9,6 @@
 -(id) init;
 -(void) setSequence:(NSString*)seq;
 -(NSString*) sequence;
+-(void) dealloc;
+-(void) print;
 @end

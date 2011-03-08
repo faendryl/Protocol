@@ -1,6 +1,6 @@
 #import <Foundation/NSObject.h>
 
-@interface Property: NSObject{
+@interface BioProperty: NSObject{
 }
-
+-(void) print;
 @end

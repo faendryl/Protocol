@@ -2,10 +2,12 @@
 #import <Foundation/NSArray.h>
 #import <Property.h>
 
-@interface Object: NSObject {
+@interface BioObject: NSObject {
     NSMutableArray* properties;
 }
 -(BOOL) conforms:(Protocol*)proto;
--(void) addProp:(Property*)property;
+-(void) addProp:(BioProperty*)property;
 -(id) init;
+-(void) print;
 @end
+
