@@ -1,13 +1,24 @@
 #import "Object.h"
 
 @implementation Object
--(BOOL) conforms:(id)proto
+-(BOOL) conforms:(Protocol*)proto
 {
-  return [[self class] conformsToProtocol:@protocol(proto)];
+  return [[self class] conformsToProtocol:proto];
 }
 
--(void) addProperty:(Property*) property{
-  [properties addObject:property];
+-(void) addProp:(Property*) property
+{
+  
+  //[properties addObject:property];
+}
+
+-(id) init
+{
+  if((self=[super init]))
+    {
+      properties=[[NSMutableArray alloc] init];
+    }
+  return self;
 }
 @end
 

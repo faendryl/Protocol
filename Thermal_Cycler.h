@@ -5,4 +5,5 @@
 }
 
 -(void) print;
+-(NSMutableArray*) run:(NSMutableArray*) inputs;
 @end

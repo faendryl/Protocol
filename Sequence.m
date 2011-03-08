@@ -1,11 +1,28 @@
 #import<Sequence.h>
 
 @implementation Sequence
--(void) setSequence:(NSString*) seq {
+-(id) initWithString:(NSString*)seq
+{
+  if(self=[super init])
+    {
+      [self setSequence:seq];
+    }
+  return self;
+}
+
+-(id) init
+{
+  return [self initWithString:@""];
+}
+
+
+-(void) setSequence:(NSString*) seq
+{
   sequence=seq;
 }
 
--(NSString*) sequence {
+-(NSString*) sequence
+{
   return sequence;
 }
 

@@ -4,4 +4,8 @@
 -(void) print {
 }
 
+-(NSMutableArray*) run:(NSMutableArray*) inputs
+{
+  return nil;
+}
 @end

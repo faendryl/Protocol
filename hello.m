@@ -1,41 +1,56 @@
 #import <stdio.h>
 #import <Thermal_Cycler.h>
 #import <Protocol.h>
-#import <PCR_Cleanup.h>
+#import <Qiagen_PCR_Cleanup.h>
 #import <Sequence.h>
 #import <DNA.h>
+#import <Amplify_DNA.h>
 
 int main(int argc,const char *argv[])
 {
   Thermal_Cycler *cycler=[[Thermal_Cycler alloc] init];
-  Qiagen_PCR_Cleanup qiagen_pcr=[[Qiagen_PCR_Cleanup alloc] init];
+  Qiagen_PCR_Cleanup *qiagen_pcr=[[Qiagen_PCR_Cleanup alloc] init];
+  
+  printf("Whut whut!\n");
+  BioProtocol *protocol=[[BioProtocol alloc] init];
+  [protocol Add_Step: @protocol(Amplify_DNA)];
+  //[protocol Add_Step: [[Amplify_DNA_Protocol alloc] init]];
+  [protocol Add_Step: @protocol(PCR_Cleanup)];
 
-  Protocol *protocol=[[Protocol alloc] init];
-  [protocol Add_Step: Amplify_DNA];
-  [protocol Add_Step: PCR_Cleanup];
-
+  printf("Whut whut!\n");
   Object *forwardPrimer=[[Object alloc] init];
-  [forwardPrimer addProperty:singleStranded];
-  [forwardPrimer addProperty:DNA];
-  [forwardPrimer addProperty:sequence];
+  Sequence *forwardPrimerSequence=[[Sequence alloc] initWithString:@"AAGCTAC"];
+  Single_Stranded_DNA *ssDNA=[[Single_Stranded_DNA alloc] init];
+  printf("Whut whut!\n");
+  printf("%d",ssDNA);
+  //[forwardPrimer addProp:ssDNA];
+  printf("Whut whut!\n");
+  [forwardPrimer addProp:forwardPrimerSequence];
+
+  printf("Whut whut!\n");
   Object *reversePrimer=[[Object alloc] init];
-  [forwardPrimer addProperty:singleStranded];
-  [forwardPrimer addProperty:DNA];
-  [forwardPrimer addProperty:sequence];
+  Sequence *reversePrimerSequence=[[Sequence alloc] initWithString:@"AAGCTAC"];
+  [forwardPrimer addProperty:ssDNA];
+  [forwardPrimer addProperty:reversePrimerSequence];
 
+  printf("Whut whut!\n");
   Object *template=[[Object alloc] init];
-  [forwardPrimer addProperty:doubleStranded];
-  [forwardPrimer addProperty:DNA];
-  [forwardPrimer addProperty:sequence];
+  Double_Stranded_DNA *dsDNA=[[Double_Stranded_DNA alloc] init];
+  Sequence *templateSequence=[[Sequence alloc] initWithString:@"AAGCTAC"];
+  [forwardPrimer addProperty:dsDNA];
+  [forwardPrimer addProperty:templateSequence];
 
+  printf("Whut whut!\n");
   NSMutableArray *implementors=[[NSMutableArray alloc] init];
   [implementors addObject:cycler];
   [implementors addObject:qiagen_pcr];
 
+  printf("Whut whut!\n");
   NSMutableArray *inputs=[[NSMutableArray alloc] init];
   [inputs addObject:forwardPrimer];
   [inputs addObject:reversePrimer];
   [inputs addObject:template];
+  printf("In the butt\n");
   NSMutableArray *outputs=[protocol runOnInputs:inputs withImplementors:implementors];
 
   return 0;

@@ -5,3 +5,5 @@
 
 @end
 
+@implementation Amplify_DNA_Protocol
+@end

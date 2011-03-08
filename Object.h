@@ -5,6 +5,7 @@
 @interface Object: NSObject {
     NSMutableArray* properties;
 }
--(BOOL) conforms:(id)proto;
--(void) addProperty:(Property*)property;
+-(BOOL) conforms:(Protocol*)proto;
+-(void) addProp:(Property*)property;
+-(id) init;
 @end
