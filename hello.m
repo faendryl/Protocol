@@ -7,8 +7,14 @@
 #import <Amplify_DNA.h>
 #import <Foundation/NSEnumerator.h>
 
+class TestClass{
+ public:
+
+};
+
 int main(int argc,const char *argv[])
 {
+  TestClass test;
   Thermal_Cycler *cycler=[[Thermal_Cycler alloc] init];
   Qiagen_PCR_Cleanup *qiagen_pcr=[[Qiagen_PCR_Cleanup alloc] init];
   

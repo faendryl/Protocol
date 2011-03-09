@@ -5,7 +5,24 @@
 @implementation BioObject
 -(BOOL) conforms:(Protocol*)proto
 {
-  return [[self class] conformsToProtocol:proto];
+  NSEnumerator *enumerateProperties=[properties objectEnumerator];
+  id property;
+  while((property=[enumerateProperties nextObject])){
+    if([[property class] conformsToProtocol:proto])
+      return YES;
+  }
+  return NO;
+}
+
+-(BioProperty*) extractProperty:(Class)propertyClass
+{
+  NSEnumerator *enumerateProperties=[properties objectEnumerator];
+  id property;
+  while((property=[enumerateProperties nextObject])){
+    if([property isKindOfClass:propertyClass])
+      return property;
+  }
+  return nil;
 }
 
 -(void) addProp:(BioProperty*) property

@@ -7,7 +7,7 @@
 }
 -(BOOL) conforms:(Protocol*)proto;
 -(void) addProp:(BioProperty*)property;
+-(BioProperty*) extractProperty:(Class)propertyClass;
 -(id) init;
 -(void) print;
 @end
-

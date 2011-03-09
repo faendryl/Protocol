@@ -11,4 +11,5 @@
 -(NSString*) sequence;
 -(void) dealloc;
 -(void) print;
+-(NSString*) reverseComplement;
 @end

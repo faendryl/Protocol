@@ -36,4 +36,10 @@
 -(void) print{
   printf("Sequence: %s\n",[sequence UTF8String]);
 }
+
+-(NSString*) reverseComplement
+{
+  NSString *reverse=[[NSString alloc] init];
+  return reverse;
+}
 @end
