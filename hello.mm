@@ -6,6 +6,7 @@
 #import <DNA.h>
 #import <Amplify_DNA.h>
 #import <Foundation/NSEnumerator.h>
+#import <Object.h>
 
 class TestClass{
  public:
@@ -41,7 +42,7 @@ int main(int argc,const char *argv[])
   [forwardPrimer addProp:reversePrimerSequence];
 
   printf("Whut whut!\n");
-  BioObject *template=[[BioObject alloc] init];
+  BioObject *templateStrand=[[BioObject alloc] init];
   Double_Stranded_DNA *dsDNA=[[Double_Stranded_DNA alloc] init];
   Sequence *templateSequence=[[Sequence alloc] initWithString:@"AAGCTAC"];
   [forwardPrimer addProp:dsDNA];
@@ -56,7 +57,7 @@ int main(int argc,const char *argv[])
   NSMutableArray *inputs=[[NSMutableArray alloc] init];
   [inputs addObject:forwardPrimer];
   [inputs addObject:reversePrimer];
-  [inputs addObject:template];
+  [inputs addObject:templateStrand];
   NSMutableArray *outputs=[protocol runOnInputs:inputs withImplementors:implementors];
 
   NSEnumerator *enumerateOutputs=[outputs objectEnumerator];
@@ -71,7 +72,7 @@ int main(int argc,const char *argv[])
   [forwardPrimerSequence release];
   [reversePrimer release];
   [reversePrimerSequence release];
-  [template release];
+  [templateStrand release];
   [templateSequence release];
   [ssDNA release];
   [dsDNA release];
