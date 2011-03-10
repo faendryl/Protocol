@@ -6,7 +6,7 @@
 {
   if((self=[super init]))
     {
-      //sequence=[[NSString alloc] init];
+      sequence=[[NSString alloc] init];
       [self setSequence:seq];
     }
   return self;

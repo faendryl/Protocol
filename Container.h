@@ -6,5 +6,5 @@
 }
 
 -(void) addObject:(BioObject*)object;
--(Container*) matchingObjects:(Class)objectClass;
+-(NSMutableArray*) matchingObjects:(Class)objectClass;
 @end

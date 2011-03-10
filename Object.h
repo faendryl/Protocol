@@ -5,7 +5,7 @@
 @interface BioObject: NSObject {
     NSMutableArray* properties;
 }
--(BOOL) confirms;//:(Protocol*)proto;
+-(BOOL) hasProperty:(Class)cl;
 -(void) addProp:(BioProperty*)property;
 -(BioProperty*) extractProperty:(Class)propertyClass;
 -(id) init;

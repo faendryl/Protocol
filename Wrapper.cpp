@@ -19,10 +19,10 @@ void printAllOccs(String<char>& haystack,
 }
 
 
-void testFunction()
+void testFunction(const char* tmpl,const char *primer)
 {
     std::cout<<"Occurrences"<<std::endl;
-  String<char> haystack="send more money";
-  String<char> needle="mo";
-  printAllOccs<ShiftOr>(haystack,needle);
+    String<char> haystack(tmpl);//="send more money";
+    String<char> needle(primer);//="mo";
+    printAllOccs<ShiftOr>(haystack,needle);
 }

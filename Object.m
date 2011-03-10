@@ -3,15 +3,15 @@
 #import <Foundation/NSEnumerator.h>
 
 @implementation BioObject
--(BOOL) confirms//:(Protocol*)proto
+-(BOOL) hasProperty:(Class)cl
 {
   printf("Out of the loop\n");
-  /*NSEnumerator *enumerateProperties=[properties objectEnumerator];
+  NSEnumerator *enumerateProperties=[properties objectEnumerator];
   id property;
   while((property=[enumerateProperties nextObject])){
-    if([[property class] conformsToProtocol:proto])
+    if([property isKindOfClass:cl])
       return YES;
-      }*/
+  }
   return NO;
 }
 

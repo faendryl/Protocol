@@ -7,5 +7,6 @@
 }
 
 -(void) print;
+-(void) amplifyTemplate:(BioObject*)templateStrand withPrimers:(NSMutableArray*)primers;
 -(NSMutableArray*) run:(NSMutableArray*) inputs;
 @end
