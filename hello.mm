@@ -24,19 +24,18 @@ int main(int argc,const char *argv[])
 
   BioProtocol *protocol=[[BioProtocol alloc] init];
   [protocol Add_Step: @protocol(Amplify_DNA)];
-  //[protocol Add_Step: [[Amplify_DNA_Protocol alloc] init]];
   [protocol Add_Step: @protocol(PCR_Cleanup)];
 
   BioObject *reversePrimer=[[BioObject alloc] init];
   Sequence *reversePrimerSequence=[[Sequence alloc] initWithString:@"GAATTC"];
-  [forwardPrimer addProp:ssDNA];
-  [forwardPrimer addProp:reversePrimerSequence];
+  [reversePrimer addProp:ssDNA];
+  [reversePrimer addProp:reversePrimerSequence];
 
   BioObject *templateStrand=[[BioObject alloc] init];
   Double_Stranded_DNA *dsDNA=[[Double_Stranded_DNA alloc] init];
   Sequence *templateSequence=[[Sequence alloc] initWithString:@"AAGCTACGAATTCAGTCGTACGATCGATCGATCGATCGATTAGTGATCGTAGCTGATGC"];
-  [forwardPrimer addProp:dsDNA];
-  [forwardPrimer addProp:templateSequence];
+  [templateStrand addProp:dsDNA];
+  [templateStrand addProp:templateSequence];
 
   NSMutableArray *implementors=[[NSMutableArray alloc] init];
   [implementors addObject:cycler];

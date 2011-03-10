@@ -1,6 +1,7 @@
 #import "Object.h"
 #import <stdio.h>
 #import <Foundation/NSEnumerator.h>
+#import <Foundation/NSString.h>
 
 @implementation BioObject
 -(BOOL) hasProperty:(Class)cl
@@ -9,6 +10,7 @@
   NSEnumerator *enumerateProperties=[properties objectEnumerator];
   id property;
   while((property=[enumerateProperties nextObject])){
+    printf("Prop %s %s\n",[[property description] UTF8String],[[cl description] UTF8String]);
     if([property isKindOfClass:cl])
       return YES;
   }

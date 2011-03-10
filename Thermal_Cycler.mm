@@ -35,7 +35,7 @@
     if(oligos==nil)
       oligos=[container matchingObjects:[Single_Stranded_DNA class]];
   }
-  printf("Objects %d\n",[templateStrand count]);
+  printf("Objects %d\n",[oligos count]);
   [self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos];
   // pseudocode:
   // find annealing locations and directions of the oligos on the template.

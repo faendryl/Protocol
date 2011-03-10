@@ -24,9 +24,10 @@
   id object;
   printf("In match\n");
   while((object=[enumerateObjects nextObject])){
-    printf("Match %s\n",[[object description] UTF8String]);
-    if([object hasProperty:objectClass])
+    if([object hasProperty:objectClass]){
+      printf("Matched\n");
       [matchedObjects addObject:object];
+    }
   }
   return matchedObjects;
 }
