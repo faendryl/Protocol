@@ -7,7 +7,7 @@
     NSMutableArray *edges;
 }
 
-
+-(id) init;
 -(void) print;
 -(void) Add_Step: (Protocol*) step;
 -(NSMutableArray*) runOnInputs:(NSMutableArray*)inputs withImplementors:(NSMutableArray*)implementors;

@@ -3,6 +3,17 @@
 #import <Foundation/NSEnumerator.h>
 
 @implementation BioProtocol
+-(id) init
+{
+  if((self=[super init]))
+    {
+      nodes=[[NSMutableArray alloc] init];
+      edges=[[NSMutableArray alloc] init];
+    }
+  return self;
+  
+}
+
 -(void) print {
 }
 
@@ -14,23 +25,27 @@
 {
   // start by checking that we have implementors for all of our steps
   NSEnumerator *enumerateSteps=[nodes objectEnumerator];
+  printf("Size of array is %d\n",[nodes count]);
   id step;
   NSMutableArray *orderedImplementors=[[NSMutableArray alloc] init];
   while((step=[enumerateSteps nextObject])){
     NSEnumerator *enumerateImplementors=[implementors objectEnumerator];
     id implementor;
+    printf("Protocol %s\n",[[step description] UTF8String]);
     while((implementor=[enumerateImplementors nextObject])){
-      if([implementor conforms:step]){
+      printf("Implementor %s\n",[[implementor description] UTF8String]);
+      if([implementor conformsToProtocol:step]){
         [orderedImplementors addObject:implementor];
       }
     }
   }
-  
   NSEnumerator *enumerateOrderedImplementors=[orderedImplementors objectEnumerator];
   id orderedImplementor;
   NSMutableArray *outputs=inputs;
   while((orderedImplementor=[enumerateOrderedImplementors nextObject])){
+      printf("Osu\n");
     outputs=[orderedImplementor run:outputs];
+      printf("Osu\n");
     
   }
   return outputs;

@@ -1,4 +1,5 @@
 #import <Container.h>
+#import <Foundation/NSEnumerator.h>
 
 
 @implementation Container
@@ -11,7 +12,7 @@
   Container *matchedContainer=[[Container alloc] init];
   NSEnumerator *enumerateObjects=[objects objectEnumerator];
   id object;
-  while((object=[enumerateObjects nextObject]]){
+  while((object=[enumerateObjects nextObject])){
     if([object isKindOfClass:objectClass])
       [matchedContainer addObject:object];
   }

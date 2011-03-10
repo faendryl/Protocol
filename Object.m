@@ -3,14 +3,15 @@
 #import <Foundation/NSEnumerator.h>
 
 @implementation BioObject
--(BOOL) conforms:(Protocol*)proto
+-(BOOL) confirms//:(Protocol*)proto
 {
-  NSEnumerator *enumerateProperties=[properties objectEnumerator];
+  printf("Out of the loop\n");
+  /*NSEnumerator *enumerateProperties=[properties objectEnumerator];
   id property;
   while((property=[enumerateProperties nextObject])){
     if([[property class] conformsToProtocol:proto])
       return YES;
-  }
+      }*/
   return NO;
 }
 

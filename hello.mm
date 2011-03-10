@@ -7,6 +7,7 @@
 #import <Amplify_DNA.h>
 #import <Foundation/NSEnumerator.h>
 #import <Object.h>
+#import <Container.h>
 
 class TestClass{
  public:
@@ -53,11 +54,14 @@ int main(int argc,const char *argv[])
   [implementors addObject:cycler];
   [implementors addObject:qiagen_pcr];
 
+  Container *pcr_tube=[[Container alloc] init];
+  [pcr_tube addObject:forwardPrimer];
+  [pcr_tube addObject:reversePrimer];
+  [pcr_tube addObject:templateStrand];
+
   printf("Whut whut!\n");
   NSMutableArray *inputs=[[NSMutableArray alloc] init];
-  [inputs addObject:forwardPrimer];
-  [inputs addObject:reversePrimer];
-  [inputs addObject:templateStrand];
+  [inputs addObject:pcr_tube];
   NSMutableArray *outputs=[protocol runOnInputs:inputs withImplementors:implementors];
 
   NSEnumerator *enumerateOutputs=[outputs objectEnumerator];
