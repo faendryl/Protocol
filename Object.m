@@ -6,11 +6,10 @@
 @implementation BioObject
 -(BOOL) hasProperty:(Class)cl
 {
-  printf("Out of the loop\n");
   NSEnumerator *enumerateProperties=[properties objectEnumerator];
   id property;
   while((property=[enumerateProperties nextObject])){
-    printf("Prop %s %s\n",[[property description] UTF8String],[[cl description] UTF8String]);
+    //printf("Prop %s %s\n",[[property description] UTF8String],[[cl description] UTF8String]);
     if([property isKindOfClass:cl])
       return YES;
   }

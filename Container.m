@@ -22,10 +22,8 @@
   NSMutableArray *matchedObjects=[[NSMutableArray alloc] init];
   NSEnumerator *enumerateObjects=[objects objectEnumerator];
   id object;
-  printf("In match\n");
   while((object=[enumerateObjects nextObject])){
     if([object hasProperty:objectClass]){
-      printf("Matched\n");
       [matchedObjects addObject:object];
     }
   }

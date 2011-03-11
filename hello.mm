@@ -17,7 +17,7 @@ int main(int argc,const char *argv[])
   Qiagen_PCR_Cleanup *qiagen_pcr=[[Qiagen_PCR_Cleanup alloc] init];
   
   BioObject *forwardPrimer=[[BioObject alloc] init];
-  Sequence *forwardPrimerSequence=[[Sequence alloc] initWithString:@"AAGCTAC"];
+  Sequence *forwardPrimerSequence=[[Sequence alloc] initWithString:@"CATCA"];
   Single_Stranded_DNA *ssDNA=[[Single_Stranded_DNA alloc] init];
   [forwardPrimer addProp:ssDNA];
   [forwardPrimer addProp:forwardPrimerSequence];

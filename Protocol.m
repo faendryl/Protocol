@@ -25,15 +25,14 @@
 {
   // start by checking that we have implementors for all of our steps
   NSEnumerator *enumerateSteps=[nodes objectEnumerator];
-  printf("Size of array is %d\n",[nodes count]);
   id step;
   NSMutableArray *orderedImplementors=[[NSMutableArray alloc] init];
   while((step=[enumerateSteps nextObject])){
     NSEnumerator *enumerateImplementors=[implementors objectEnumerator];
     id implementor;
-    printf("Protocol %s\n",[[step description] UTF8String]);
+    //printf("Protocol %s\n",[[step description] UTF8String]);
     while((implementor=[enumerateImplementors nextObject])){
-      printf("Implementor %s\n",[[implementor description] UTF8String]);
+      //printf("Implementor %s\n",[[implementor description] UTF8String]);
       if([implementor conformsToProtocol:step]){
         [orderedImplementors addObject:implementor];
       }
@@ -43,9 +42,7 @@
   id orderedImplementor;
   NSMutableArray *outputs=inputs;
   while((orderedImplementor=[enumerateOrderedImplementors nextObject])){
-      printf("Osu\n");
     outputs=[orderedImplementor run:outputs];
-      printf("Osu\n");
     
   }
   return outputs;

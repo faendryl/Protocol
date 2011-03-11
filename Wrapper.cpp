@@ -30,36 +30,45 @@ void testFunction(const char* tmpl,const char *primer)
 
 bool amplify(const char* tmpl,const char* primer1,const char* primer2,char* amplicon)
 {
-    DnaString templateString(tmpl);
+    String<char> templateString(tmpl);
     // duplicate once to avoid end overlap effects
     append(templateString,templateString);
-    DnaString primerString1(primer1),primerString2(primer2);
-    Finder<DnaString > finder(templateString);
-    Pattern<DnaString,ShiftOr> pattern1(primerString1),pattern2(primerString2);
+    String<char> primerString1(primer1),primerString2(primer2);
+    Finder<String<char> > finder(templateString);
+    Pattern<String<char>,ShiftOr> pattern1(primerString1),pattern2(primerString2);
 
-    DnaString forwardPrimer,reversePrimer;
+    String<char> forwardPrimer,reversePrimer;
 
     if(find(finder,pattern1)){
         forwardPrimer=primerString1;
         reversePrimer=primerString2;}
-    else if(find(finder,pattern2)){
+    else{
+        clear(finder);
+        if(find(finder,pattern2)){
         forwardPrimer=primerString2;
         reversePrimer=primerString1;
+        }
+        else
+            return false; // failure
     }
-    else
-        return false; // failure
 
     //reversePrimer.reverseComplement();
     //reverseComplement(reversePrimer); // in place?
-    ModifiedString<ModifiedString<DnaString, ModComplementDna>,ModReverse> reversePrimerReverseComplementString;
-    Pattern<DnaString,ShiftOr> reversePrimerReverseComplementPattern(reversePrimerReverseComplementString);
+    ModifiedString<ModifiedString<String<char>, ModComplementDna>,ModReverse> reversePrimerReverseComplementString(reversePrimer);
+    String<char> filtered(reversePrimerReverseComplementString);
+    //String<char> reversed(toCString(String<char>ReverseComplement(reversePrimer)));
+    //Pattern<String<char>,ShiftOr> reversePrimerReverseComplementPattern(String<char>ReverseComplement(reversePrimer));//reversePrimerReverseComplementString);
+    Pattern<String<char>,ShiftOr> reversePrimerReverseComplementPattern(filtered);
 
     int startIndex=position(finder);
-    if(find(finder,reversePrimerReverseComplementPattern)){
-        int finalIndex=position(finder)+length(reversePrimer)-1;
-        strncpy(amplicon,toCString(infix(templateString,startIndex,finalIndex)),finalIndex-startIndex+1);
+    clear(finder);
+    int finalIndex=0;
+    while(finalIndex<=startIndex && find(finder,reversePrimerReverseComplementPattern)){
+        finalIndex=position(finder)+length(reversePrimer);
     }
-    else
-        return false;
-    return true;
+    if(finalIndex>startIndex){
+        strncpy(amplicon,toCString(infix(templateString,startIndex,finalIndex)),finalIndex-startIndex+1);
+        return true;
+    }
+    return false;
 }

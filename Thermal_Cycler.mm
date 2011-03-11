@@ -10,16 +10,19 @@
 }
 
 
--(void) amplifyTemplate:(BioObject*)templateStrand withPrimers:(NSMutableArray*)primers
+-(BioObject*) amplifyTemplate:(BioObject*)templateStrand withPrimers:(NSMutableArray*)primers
 {
         //  Sequence *templateSequence=[templateStrand extractProperty:[Sequence class]];
-  NSEnumerator *enumeratePrimers=[primers objectEnumerator];
-  id primer;
-  printf("template %s\n",[[[templateStrand extractProperty:[Sequence class]] sequence] UTF8String]);
-  while((primer=[enumeratePrimers nextObject])){
-    printf("primer %s\n",[[[primer extractProperty:[Sequence class]] sequence] UTF8String]);
-    testFunction([[[templateStrand extractProperty:[Sequence class]] sequence] UTF8String],[[[primer extractProperty:[Sequence class]] sequence] UTF8String]);
-  }
+  //printf("template %s\n",[[[templateStrand extractProperty:[Sequence class]] sequence] UTF8String]);
+  char ampliconBuffer[100000]; // danger Will Robinson!
+  amplify([[[templateStrand extractProperty:[Sequence class]] sequence] UTF8String],[[[[primers objectAtIndex:0] extractProperty:[Sequence class]] sequence] UTF8String],[[[[primers
+  objectAtIndex:1] extractProperty:[Sequence class]] sequence] UTF8String],ampliconBuffer);
+  BioObject *amplicon=[BioObject new];
+  Sequence *ampliconSequence=[[Sequence alloc] initWithString:[NSString stringWithUTF8String:ampliconBuffer]];
+  Double_Stranded_DNA *dsDNA=[Double_Stranded_DNA new];
+  [amplicon addProp:ampliconSequence];
+  [amplicon addProp:dsDNA];
+  return amplicon;
 }
 
 -(NSMutableArray*) run:(NSMutableArray*) inputs
@@ -35,19 +38,9 @@
     if(oligos==nil)
       oligos=[container matchingObjects:[Single_Stranded_DNA class]];
   }
-  printf("Objects %d\n",[oligos count]);
-  [self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos];
-  // pseudocode:
-  // find annealing locations and directions of the oligos on the template.
-  // simple as searching sequence and reverse complement?
-//  NSRange annealingRange;
-        /*  annealingRange=[[templateStrand getString] rangeOfString:[oligos getString]];
-  if(annealingRange.location != NSNotFound){
-    // rejoice, we have binding!  do stuff
-
-    }*/
-  
-  return nil;
+  NSMutableArray *outputs=[NSMutableArray new];
+  [outputs addObject:[self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos]];
+  return outputs;
 }
 @end
 

@@ -6,6 +6,6 @@
 
 -(NSMutableArray*) run:(NSMutableArray*) inputs
 {
-  return nil;
+  return inputs;
 }
 @end
