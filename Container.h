@@ -5,6 +5,8 @@
     NSMutableArray *objects;
 }
 
+-(void) printWithPrefix:(NSString*)prefix;
+-(void) print;
 -(void) addObject:(BioObject*)object;
 -(NSMutableArray*) matchingObjects:(Class)objectClass;
 @end

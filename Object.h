@@ -9,5 +9,6 @@
 -(void) addProp:(BioProperty*)property;
 -(BioProperty*) extractProperty:(Class)propertyClass;
 -(id) init;
+-(void) printWithPrefix:(NSString*)prefix;
 -(void) print;
 @end

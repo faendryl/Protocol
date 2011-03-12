@@ -33,8 +33,15 @@
   [super dealloc];
 }
 
--(void) print{
-  printf("Sequence: %s\n",[sequence UTF8String]);
+-(void) printWithPrefix:(NSString*)prefix
+{
+  char *cPrefix=[prefix UTF8String];
+  printf("%sSequence: %s\n",cPrefix,[sequence UTF8String]);
+}
+
+-(void) print
+{
+  [self printWithPrefix:@""];
 }
 
 -(NSString*) reverseComplement

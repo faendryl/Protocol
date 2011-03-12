@@ -38,9 +38,11 @@
     if(oligos==nil)
       oligos=[container matchingObjects:[Single_Stranded_DNA class]];
   }
-  NSMutableArray *outputs=[NSMutableArray new];
-  [outputs addObject:[self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos]];
-  return outputs;
+  //NSMutableArray *outputs=[NSMutableArray new];
+std::cout<<"Hey"<<std::endl;
+  [inputs addObject:[self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos]];
+std::cout<<"Hey"<<std::endl;
+  return inputs;
 }
 @end
 

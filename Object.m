@@ -41,13 +41,20 @@
   return self;
 }
 
--(void) print
+-(void) printWithPrefix:(NSString*)prefix
 {
+  char *cPrefix=[prefix UTF8String];
+  printf("%sObject\n",cPrefix);
   NSEnumerator *enumerateProperties=[properties objectEnumerator];
   id property;
   while((property=[enumerateProperties nextObject])){
-    [property print];
+    [property printWithPrefix:[prefix stringByAppendingString:@"\t"]];
   }
+}
+
+-(void) print
+{
+  [self printWithPrefix:@""];
 }
 @end
 

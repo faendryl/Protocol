@@ -2,15 +2,15 @@
 
 @interface DNA:BioProperty{
 }
--(void) print;
+-(void) printWithPrefix:(NSString*)prefix;
 @end
 
 @interface Single_Stranded_DNA:DNA{
 }
--(void) print;
+-(void) printWithPrefix:(NSString*)prefix;
 @end
 
 @interface Double_Stranded_DNA:DNA{
 }
--(void) print;
+-(void) printWithPrefix:(NSString*)prefix;
 @end

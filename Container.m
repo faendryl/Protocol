@@ -5,6 +5,22 @@
 
 @implementation Container
 
+-(void) printWithPrefix:(NSString*)prefix
+{
+  NSEnumerator *enumerateObjects=[objects objectEnumerator];
+  char *cPrefix=[prefix UTF8String];
+  printf("%sContainer\n",cPrefix);
+  id object;
+  while((object=[enumerateObjects nextObject])){
+    [object printWithPrefix:[prefix stringByAppendingString:@"\t"]];
+  }
+}
+
+-(void) print
+{
+  [self printWithPrefix:@""];
+}
+
 -(id)init
 {
   if((self=[super init])){

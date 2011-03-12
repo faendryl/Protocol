@@ -1,23 +1,27 @@
 #import<DNA.h>
 #import<stdio.h>
+#import<Foundation/NSString.h>
 
 @implementation DNA
--(void) print
+-(void) printWithPrefix:(NSString*)prefix
 {
-  printf("DNA\n");
+  char *cPrefix=[prefix UTF8String];
+  printf("%sDNA\n",cPrefix);
 }
 @end
 
 @implementation Single_Stranded_DNA
--(void) print
+-(void) printWithPrefix:(NSString*)prefix
 {
-  printf("DNA: single-stranded\n");
+  char *cPrefix=[prefix UTF8String];
+  printf("%sDNA: single-stranded\n",cPrefix);
 }
 @end
 
 @implementation Double_Stranded_DNA
--(void) print
+-(void) printWithPrefix:(NSString*)prefix
 {
-  printf("DNA: double-stranded\n");
+  char *cPrefix=[prefix UTF8String];
+  printf("%sDNA: double-stranded\n",cPrefix);
 }
 @end

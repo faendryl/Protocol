@@ -1,6 +1,7 @@
 #import "Protocol.h"
 #import <stdio.h>
 #import <Foundation/NSEnumerator.h>
+#include <iostream>
 
 @implementation BioProtocol
 -(id) init
@@ -43,7 +44,7 @@
   NSMutableArray *outputs=inputs;
   while((orderedImplementor=[enumerateOrderedImplementors nextObject])){
     outputs=[orderedImplementor run:outputs];
-    
+    printf("Step\n");
   }
   return outputs;
 }

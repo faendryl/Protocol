@@ -10,6 +10,7 @@
 -(void) setSequence:(NSString*)seq;
 -(NSString*) sequence;
 -(void) dealloc;
+-(void) printWithPrefix:(NSString*)prefix;
 -(void) print;
 -(NSString*) reverseComplement;
 @end
