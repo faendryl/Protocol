@@ -43,7 +43,7 @@
 
 -(void) printWithPrefix:(NSString*)prefix
 {
-  char *cPrefix=[prefix UTF8String];
+  const char *cPrefix=[prefix UTF8String];
   printf("%sObject\n",cPrefix);
   NSEnumerator *enumerateProperties=[properties objectEnumerator];
   id property;

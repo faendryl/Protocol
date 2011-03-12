@@ -50,11 +50,9 @@ int main(int argc,const char *argv[])
   NSMutableArray *inputs=[[NSMutableArray alloc] init];
   [inputs addObject:pcr_tube];
   NSMutableArray *outputs=[protocol runOnInputs:inputs withImplementors:implementors];
-std::cout<<"wo"<<std::endl;
   NSEnumerator *enumerateOutputs=[outputs objectEnumerator];
   id output;
   while((output=[enumerateOutputs nextObject])){
-std::cout<<"Dear me"<<[[output description] UTF8String]<<std::endl;
     [output print];
   }
 

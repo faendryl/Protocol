@@ -1,14 +1,14 @@
 #import <Container.h>
 #import <Foundation/NSEnumerator.h>
 #import <Foundation/NSString.h>
-
+#import <Filter.h>
 
 @implementation Container
 
 -(void) printWithPrefix:(NSString*)prefix
 {
   NSEnumerator *enumerateObjects=[objects objectEnumerator];
-  char *cPrefix=[prefix UTF8String];
+  const char *cPrefix=[prefix UTF8String];
   printf("%sContainer\n",cPrefix);
   id object;
   while((object=[enumerateObjects nextObject])){
@@ -40,6 +40,19 @@
   id object;
   while((object=[enumerateObjects nextObject])){
     if([object hasProperty:objectClass]){
+      [matchedObjects addObject:object];
+    }
+  }
+  return matchedObjects;
+}
+
+-(NSMutableArray*) filtered:(Filter*)filter
+{
+  NSMutableArray *matchedObjects=[[NSMutableArray alloc] init];
+  NSEnumerator *enumerateObjects=[objects objectEnumerator];
+  id object;
+  while((object=[enumerateObjects nextObject])){
+    if([filter passes:object]){
       [matchedObjects addObject:object];
     }
   }

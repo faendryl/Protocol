@@ -35,7 +35,7 @@
 
 -(void) printWithPrefix:(NSString*)prefix
 {
-  char *cPrefix=[prefix UTF8String];
+  const char *cPrefix=[prefix UTF8String];
   printf("%sSequence: %s\n",cPrefix,[sequence UTF8String]);
 }
 

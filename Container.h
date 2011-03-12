@@ -9,4 +9,5 @@
 -(void) print;
 -(void) addObject:(BioObject*)object;
 -(NSMutableArray*) matchingObjects:(Class)objectClass;
+-(NSMutableArray*) filtered:(Filter*)filter;
 @end
