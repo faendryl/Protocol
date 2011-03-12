@@ -1,5 +1,6 @@
 #import<Object.h>
 #import<Foundation/NSArray.h>
+#import<Filter.h>
 
 @interface Container:NSObject{
     NSMutableArray *objects;
