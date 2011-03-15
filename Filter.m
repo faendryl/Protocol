@@ -21,4 +21,9 @@
   }
   return YES;
 }
+
+-(void) addCondition:(Condition*)condition
+{
+  [conditions addObject:condition];
+}
 @end

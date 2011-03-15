@@ -1,3 +1,4 @@
+#import <stdio.h>
 #import <Container.h>
 #import <Foundation/NSEnumerator.h>
 #import <Foundation/NSString.h>
@@ -46,16 +47,20 @@
   return matchedObjects;
 }
 
--(NSMutableArray*) filtered:(Filter*)filter
+-(Container*) filtered:(Filter*)filter
 {
-  NSMutableArray *matchedObjects=[[NSMutableArray alloc] init];
+  printf("Wuh\n");
+  Container *filteredContainer=[Container new];
+  //NSMutableArray *matchedObjects=[[NSMutableArray alloc] init];
   NSEnumerator *enumerateObjects=[objects objectEnumerator];
   id object;
   while((object=[enumerateObjects nextObject])){
     if([filter passes:object]){
-      [matchedObjects addObject:object];
+      [filteredContainer addObject:object];
+      //[matchedObjects addObject:object];
     }
   }
-  return matchedObjects;
+  //return matchedObjects;
+  return filteredContainer;
 }
 @end

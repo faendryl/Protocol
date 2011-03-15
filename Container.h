@@ -10,5 +10,5 @@
 -(void) print;
 -(void) addObject:(BioObject*)object;
 -(NSMutableArray*) matchingObjects:(Class)objectClass;
--(NSMutableArray*) filtered:(Filter*)filter;
+-(Container*) filtered:(Filter*)filter;
 @end

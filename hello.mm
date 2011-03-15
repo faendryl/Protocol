@@ -34,7 +34,7 @@ int main(int argc,const char *argv[])
 
   BioObject *templateStrand=[[BioObject alloc] init];
   Double_Stranded_DNA *dsDNA=[[Double_Stranded_DNA alloc] init];
-  Sequence *templateSequence=[[Sequence alloc] initWithString:@"AAGCTACGAATTCAGTCGTACGATCGATCGATCGATCGATTAGTGATCGTAGCTGATGC"];
+  Sequence *templateSequence=[[Sequence alloc] initWithString:@"AAGCTACGAATTCAGTCGTACGATCGATAGTGTAGTAGTAGTCATCGATGCTAGTGTGATGCTAGTAGTAGCGATAGTGCATGATGTGATGCTAGTAGTAGCTAGCTAGTGATCGATGCATGTACGATCGATCGATTAGTGATCGTAGCTGATGC"];
   [templateStrand addProp:dsDNA];
   [templateStrand addProp:templateSequence];
 

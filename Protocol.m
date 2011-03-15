@@ -43,6 +43,12 @@
   NSMutableArray *outputs=inputs;
   while((orderedImplementor=[enumerateOrderedImplementors nextObject])){
     outputs=[orderedImplementor run:outputs];
+    printf("Protocol step outputs:\n");
+    NSEnumerator *enumerateOutputs=[outputs objectEnumerator];
+    id output;
+    while((output=[enumerateOutputs nextObject])){
+      [output print];
+    }
   }
   return outputs;
 }

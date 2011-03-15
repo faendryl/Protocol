@@ -32,14 +32,13 @@
   NSMutableArray *oligos=nil;
   NSEnumerator *enumerateContainers=[inputs objectEnumerator];
   id container;
-  while((container=[enumerateContainers nextObject])){
-    if(templateStrand==nil)
-      templateStrand=[container matchingObjects:[Double_Stranded_DNA class]];
-    if(oligos==nil)
-      oligos=[container matchingObjects:[Single_Stranded_DNA class]];
-  }
+  container=[enumerateContainers nextObject];
+  if(templateStrand==nil)
+    templateStrand=[container matchingObjects:[Double_Stranded_DNA class]];
+  if(oligos==nil)
+    oligos=[container matchingObjects:[Single_Stranded_DNA class]];
   //NSMutableArray *outputs=[NSMutableArray new];
-  [inputs addObject:[self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos]];
+  [container addObject:[self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos]];
   return inputs;
 }
 @end
