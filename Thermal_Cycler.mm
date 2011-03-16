@@ -41,5 +41,15 @@
   [container addObject:[self amplifyTemplate:[templateStrand objectAtIndex:0] withPrimers:oligos]];
   return inputs;
 }
+
+// should go through container, 
+// "Restriction" protocol consists of taking a container with DNA in it, mixing in an enzyme, then calling thermal cycle
+// the enzyme object knows what it does at a given temperature
+// this will mean that objects are not entirely passive (in the simulated setting); is that okay?
+// IMPORTANT: a division in what this describes into "IMPERATIVE" and "DESCRIPTIVE"
+// IMPERATIVE: what you need to do
+// DESCRIPTIVE: what the results are
+// in that case, let's make "restriction enzyme" a property, not an object type
+
 @end
 
