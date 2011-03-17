@@ -2,6 +2,8 @@
 #import <seqan/basic.h>
 #import <seqan/find.h>
 #import <seqan/modifier.h>
+#import <seqan/file.h>
+#import <seqan/sequence.h>
 
 using namespace seqan;
 
@@ -71,4 +73,17 @@ bool amplify(const char* tmpl,const char* primer1,const char* primer2,char* ampl
         return true;
     }
     return false;
+}
+
+void readFasta(const char *fasta_file,char *sequence_tag_buffer,char *sequence_buffer)
+{
+    std::fstream fstrm;
+    fstrm.open(fasta_file,std::ios_base::in | std::ios_base::binary);
+    String<char> fasta_tag;
+    readMeta(fstrm,fasta_tag,Fasta());
+    strcpy(sequence_tag_buffer,toCString(fasta_tag));
+    String<char> fasta_seq;
+    read(fstrm,fasta_seq,Fasta());
+    strcpy(sequence_buffer,toCString(fasta_seq));
+    fstrm.close();
 }

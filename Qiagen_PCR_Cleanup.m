@@ -27,7 +27,6 @@ int compare(id self,SEL _cmd)
 
   id container;
   while((container=[enumerateInputs nextObject])){
-    Container *filteredContainer=[container filtered:dnaSizeFilter];
     [outputs addObject:[container filtered:dnaSizeFilter]];
   }
   return outputs;

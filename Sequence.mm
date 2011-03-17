@@ -1,7 +1,16 @@
 #import<Sequence.h>
 #import<stdio.h>
+#import<Wrapper.h>
 
 @implementation Sequence
+-(id) initWithFasta:(const char*)fastaFile
+{
+  char sequenceBuffer[100000];
+  char sequenceTagBuffer[10000];
+  readFasta(fastaFile,sequenceTagBuffer,sequenceBuffer);
+  return [self initWithString:[NSString stringWithUTF8String:sequenceBuffer]];
+}
+
 -(id) initWithString:(NSString*)seq
 {
   if((self=[super init]))
@@ -44,9 +53,4 @@
   [self printWithPrefix:@""];
 }
 
--(NSString*) reverseComplement
-{
-  NSString *reverse=[[NSString alloc] init];
-  return reverse;
-}
 @end

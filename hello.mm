@@ -1,5 +1,5 @@
 #include <iostream>
-#import <stdio.h>
+//#import <stdio.h>
 #import <Thermal_Cycler.h>
 #import <Protocol.h>
 #import <Qiagen_PCR_Cleanup.h>
@@ -12,6 +12,8 @@
 #import <Foundation/NSAutoreleasePool.h>
 #import <Perform_Restriction_Digest.h>
 
+#import <Wrapper.h>
+
 int main(int argc,const char *argv[])
 {
   NSAutoreleasePool *pool=[NSAutoreleasePool new];
@@ -20,7 +22,7 @@ int main(int argc,const char *argv[])
   Perform_Restriction_Digest *restriction_digest=[Perform_Restriction_Digest new];
   
   BioObject *forwardPrimer=[[BioObject alloc] init];
-  Sequence *forwardPrimerSequence=[[Sequence alloc] initWithString:@"CATCA"];
+  Sequence *forwardPrimerSequence=[[Sequence alloc] initWithFasta:"reversePrimer.fasta"];
   Single_Stranded_DNA *ssDNA=[[Single_Stranded_DNA alloc] init];
   [forwardPrimer addProp:ssDNA];
   [forwardPrimer addProp:forwardPrimerSequence];
@@ -31,13 +33,14 @@ int main(int argc,const char *argv[])
   [protocol Add_Step: @protocol(Restriction_Digest)];
 
   BioObject *reversePrimer=[[BioObject alloc] init];
-  Sequence *reversePrimerSequence=[[Sequence alloc] initWithString:@"GAATTC"];
+  Sequence *reversePrimerSequence=[[Sequence alloc] initWithFasta:"forwardPrimer.fasta"];
   [reversePrimer addProp:ssDNA];
   [reversePrimer addProp:reversePrimerSequence];
 
   BioObject *templateStrand=[[BioObject alloc] init];
   Double_Stranded_DNA *dsDNA=[[Double_Stranded_DNA alloc] init];
-  Sequence *templateSequence=[[Sequence alloc] initWithString:@"AAGCTACGAATTCAGTCGTACGATCGATAGTGTAGTAGTAGTCATCGATGCTAGTGTGATGCTAGTAGTAGCGATAGTGCATGATGTGATGCTAGTAGTAGCTAGCTAGTGATCGATGCATGTACGATCGATCGATTAGTGATCGTAGCTGATGC"];
+  Sequence *templateSequence=[[Sequence alloc] initWithFasta:"templateSequence.fasta"];
+
   [templateStrand addProp:dsDNA];
   [templateStrand addProp:templateSequence];
 

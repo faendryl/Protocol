@@ -5,6 +5,7 @@
     NSString *sequence;
 }
 
+-(id) initWithFasta:(const char*)fastaFile;
 -(id) initWithString:(NSString*)seq;
 -(id) init;
 -(void) setSequence:(NSString*)seq;
@@ -12,5 +13,4 @@
 -(void) dealloc;
 -(void) printWithPrefix:(NSString*)prefix;
 -(void) print;
--(NSString*) reverseComplement;
 @end
