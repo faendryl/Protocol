@@ -9,7 +9,11 @@
   // go through container, look for dsDNA or ssDNA, cut as appropriate
   // need a better representation for dsDNA
 }
--(void) printWithPrefix:(NSString*)prefix;
-
+-(void) printWithPrefix:(NSString*)prefix
+{
+  const char *cPrefix=[prefix UTF8String];
+  printf("%sRestriction enzyme\n",cPrefix);
+  [restriction_site printWithPrefix:[prefix stringByAppendingString:@"\t"]];
+}
 
 @end

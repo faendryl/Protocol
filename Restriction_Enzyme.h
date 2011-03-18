@@ -1,6 +1,7 @@
 #import <Property.h>
+#import <Sequence.h>
 
-@interface Container;
+@class Container;
 
 @interface Restriction_Enzyme: BioProperty{
     Sequence *restriction_site;

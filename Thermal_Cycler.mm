@@ -13,7 +13,6 @@
 -(BioObject*) amplifyTemplate:(BioObject*)templateStrand withPrimers:(NSMutableArray*)primers
 {
         //  Sequence *templateSequence=[templateStrand extractProperty:[Sequence class]];
-  //printf("template %s\n",[[[templateStrand extractProperty:[Sequence class]] sequence] UTF8String]);
   char ampliconBuffer[100000]; // danger Will Robinson!
   amplify([[[templateStrand extractProperty:[Sequence class]] sequence] UTF8String],[[[[primers objectAtIndex:0] extractProperty:[Sequence class]] sequence] UTF8String],[[[[primers
   objectAtIndex:1] extractProperty:[Sequence class]] sequence] UTF8String],ampliconBuffer);
