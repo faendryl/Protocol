@@ -24,10 +24,16 @@
     NSEnumerator *enumerateContainer=[[container matchingObjects:[DNA class]] objectEnumerator];
     id dnaObject;
     while((dnaObject=[enumerateContainer nextObject])){
-      [container addObject:[self restrict:dnaObject enzyme:restrictionEnzyme]]; // not guaranteeing complete digestion
+      BioObject* restrictionProduct=[self restrict:dnaObject enzyme:restrictionEnzyme];
+      if(restrictionProduct!=nil)
+        [container addObject:restrictionProduct]; // not guaranteeing complete digestion
     }
   }
   return inputs;
 }
 
+-(void) setRestrictionEnzyme:(BioObject*)inputEnzyme
+{
+  restrictionEnzyme=inputEnzyme;
+}
 @end

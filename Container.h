@@ -11,4 +11,5 @@
 -(void) addObject:(BioObject*)object;
 -(NSMutableArray*) matchingObjects:(Class)objectClass;
 -(Container*) filtered:(Filter*)filter;
+-(NSMutableArray*) objects;
 @end

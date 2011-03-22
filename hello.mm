@@ -11,6 +11,7 @@
 #import <Container.h>
 #import <Foundation/NSAutoreleasePool.h>
 #import <Perform_Restriction_Digest.h>
+#import <Restriction_Enzyme.h>
 
 #import <Wrapper.h>
 
@@ -20,6 +21,10 @@ int main(int argc,const char *argv[])
   Thermal_Cycler *cycler=[[Thermal_Cycler alloc] init];
   Qiagen_PCR_Cleanup *qiagen_pcr=[[Qiagen_PCR_Cleanup alloc] init];
   Perform_Restriction_Digest *restriction_digest=[Perform_Restriction_Digest new];
+  Restriction_Enzyme *AgeI=[Restriction_Enzyme new];
+  [AgeI setRestrictionSite:[[Sequence alloc] initWithString:[NSString stringWithUTF8String:"ACCGGT"]]];
+  [AgeI setCleavageSite:1];
+  [restriction_digest setRestrictionEnzyme:AgeI];
   
   BioObject *forwardPrimer=[[BioObject alloc] init];
   Sequence *forwardPrimerSequence=[[Sequence alloc] initWithFasta:"reversePrimer.fasta"];

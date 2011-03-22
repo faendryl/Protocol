@@ -7,4 +7,5 @@
 }
 
 -(NSMutableArray*) run:(NSMutableArray*) inputs;
+-(void) setRestrictionEnzyme:(BioObject*)inputEnzyme;
 @end

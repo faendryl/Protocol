@@ -63,4 +63,9 @@
   //return matchedObjects;
   return filteredContainer;
 }
+
+-(NSMutableArray*) objects
+{
+  return objects;
+}
 @end

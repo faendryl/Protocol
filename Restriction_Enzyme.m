@@ -16,4 +16,13 @@
   [restriction_site printWithPrefix:[prefix stringByAppendingString:@"\t"]];
 }
 
+-(void) setRestrictionSite:(Sequence*)restriction_site_input
+{
+  restriction_site=restriction_site_input;
+}
+
+-(void) setCleavageSite:(int)cleavage_site_input
+{
+  cleavage_site=cleavage_site_input;
+}
 @end
